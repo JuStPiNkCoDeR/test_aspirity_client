@@ -1,4 +1,4 @@
-Client part of test task from Aspirity company.
+### Client part of test task from Aspirity company.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
