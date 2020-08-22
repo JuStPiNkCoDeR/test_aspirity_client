@@ -5,7 +5,7 @@ const TrainingTable = () => {
     return (
         <>
             <!-- Weeks graph -->
-            <!-- Filters -->
+            <!-- Filter & Sorts -->
             <!-- Trainings -->
         </>
     );

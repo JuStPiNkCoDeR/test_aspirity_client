@@ -1,5 +1,5 @@
 /**
- * @typedef {'WALKING'|'RUN'|'BICYCLE'|'HIIT'} ActivityType
+ * @typedef {'WALKING'|'RUN'|'BICYCLE'|'SKIING'} ActivityType
  * @typedef {'DESC'|'ASC'} SortDirections
  */
 
@@ -16,7 +16,7 @@ export const activityTypes = {
     WALKING: 'WALKING',
     RUN: 'RUN',
     BICYCLE: 'BICYCLE',
-    HIIT: 'HIIT', // High Intensity Interval Training
+    SKIING: 'SKIING',
 };
 /**
  * @enum {SortDirections}
