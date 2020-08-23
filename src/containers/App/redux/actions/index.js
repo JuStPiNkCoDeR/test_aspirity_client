@@ -1,6 +1,8 @@
 /**
- * @typedef {'WALKING'|'RUN'|'BICYCLE'|'SKIING'} ActivityType
+ * @typedef {'ALL'|'WALKING'|'RUN'|'BICYCLE'|'SKIING'} ActivityType
  * @typedef {'DESC'|'ASC'} SortDirections
+ * @typedef {'DATE'|'DISTANCE'} Sortable
+ * @typedef {{type: string}} Action
  */
 
 // Action types
@@ -13,41 +15,52 @@ export const SET_DISTANCE_SORT_DIRECTION = 'SET_DISTANCE_SORT_DIRECTION';
  * @enum {ActivityType}
  */
 export const activityTypes = {
-    WALKING: 'WALKING',
-    RUN: 'RUN',
-    BICYCLE: 'BICYCLE',
-    SKIING: 'SKIING',
+  ALL: 'ALL',
+  WALKING: 'WALKING',
+  RUN: 'RUN',
+  BICYCLE: 'BICYCLE',
+  SKIING: 'SKIING',
 };
 /**
  * @enum {SortDirections}
  */
 export const sortDirections = {
-    DESC: 'DESC',
-    ASC: 'ASC',
-}
+  DESC: 'DESC',
+  ASC: 'ASC',
+};
+/**
+ * @enum {Sortable}
+ */
+export const sortableParams = {
+  DATE: 'DATE',
+  DISTANCE: 'DISTANCE',
+};
 // Action creators
 /**
- *
  * @param {Array} trainings
+ * @return {Action}
  */
 export function setTrainings(trainings) {
-    return { type: SET_TRAININGS, trainings };
+  return {type: SET_TRAININGS, trainings};
 }
 /**
  * @param {ActivityType} filter
+ * @return {Action}
  */
 export function setActivityTypeFilter(filter) {
-    return { type: SET_ACTIVITY_TYPE_FILTER, filter };
+  return {type: SET_ACTIVITY_TYPE_FILTER, filter};
 }
 /**
  * @param {SortDirections} direction
+ * @return {Action}
  */
 export function setDateSortDirection(direction) {
-    return { type: SET_DATE_SORT_DIRECTION, direction };
+  return {type: SET_DATE_SORT_DIRECTION, direction};
 }
 /**
  * @param {SortDirections} direction
+ * @return {Action}
  */
 export function setDistanceSortDirection(direction) {
-    return { type: SET_DISTANCE_SORT_DIRECTION, direction };
+  return {type: SET_DISTANCE_SORT_DIRECTION, direction};
 }

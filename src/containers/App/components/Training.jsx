@@ -25,24 +25,24 @@ const Training = ({idx, data}) => {
       <th scope="row">{idx + 1}</th>
       <td>{isEditing ? (
             <Input
-                type="date"
-                name="date"
-                defaultValue={data.date}
-                innerRef={register}
+              type="date"
+              name="date"
+              defaultValue={data.date}
+              innerRef={register}
             />
           ) : data.date}</td>
       <td>{data.fullName}</td>
       <td>{isEditing ? (
             <Input
-                type="select"
-                name="activityType"
-                defaultValue={data.activityType}
-                innerRef={register}
+              type="select"
+              name="activityType"
+              defaultValue={data.activityType}
+              innerRef={register}
             >
-                <option value="run">run</option>
-                <option value="bicycle">bicycle</option>
-                <option value="skiing">skiing</option>
-                <option value="walking">walking</option>
+              <option value="run">run</option>
+              <option value="bicycle">bicycle</option>
+              <option value="skiing">skiing</option>
+              <option value="walking">walking</option>
             </Input>
           ) : data.activityType}</td>
       <td>{isEditing ? (
@@ -65,13 +65,13 @@ const Training = ({idx, data}) => {
         <Button outline onClick={handleEditAction}>Edit</Button>
         <Button outline color="danger">Delete</Button>
         {isEditing && (
-            <Button
-                outline
-                color="success"
-                onClick={handleSubmit(handleSaveAction)}
-            >
+          <Button
+            outline
+            color="success"
+            onClick={handleSubmit(handleSaveAction)}
+          >
               Save
-            </Button>
+          </Button>
         )}
       </td>
     </tr>
