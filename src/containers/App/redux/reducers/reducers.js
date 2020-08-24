@@ -13,19 +13,42 @@ import {
  *  type: string,
  *  payload: SortsState,
  * }} SortsAction
+ * @typedef {{
+ *  ID: string,
+ *  date: string,
+ *  fullName: string,
+ *  activityType: string,
+ *  distance: string,
+ *  comment: ?string
+ * }} Training
+ * @typedef {Training[]} TrainingsState
+ * @typedef {{
+ *  type: string,
+ *  payload: {
+ *    trainings: Training[],
+ *  }
+ * }} TrainingsAction
  */
 
 /**
  * @type {ActivityTypeFilterState}
  */
+
 const initActivityTypeFilter = activityTypes.ALL;
 /**
  * @type {SortsState}
  */
+
 const initSorts = {
   param: sortableParams.DATE,
   direction: sortDirections.DESC,
 };
+
+/**
+ * @type {TrainingsState}
+ */
+const initTrainings = [];
+
 /**
  * @param {ActivityTypeFilterState} state
  * @param {ActivityTypeFilterAction} action
@@ -46,27 +69,25 @@ export function activityTypeFilter(state = initActivityTypeFilter, action) {
  * @return {SortsState}
  */
 export function sorts(state = initSorts, action) {
-  // TODO sorts change logic
   switch (action.type) {
     case SET_DATE_SORT_DIRECTION:
-      return state;
+      return action.payload;
     case SET_DISTANCE_SORT_DIRECTION:
-      return state;
+      return action.payload;
     default:
       return state;
   }
 }
 
-// TODO cool JSDoc
 /**
- * @param state
- * @param action
- * @return {Validator<NonNullable<((InferPropsInner<any> & Partial<InferPropsInner<Pick<{date: Validator<NonNullable<string>>, distance: Validator<NonNullable<number>>, fullName: Validator<NonNullable<string>>, comment: Requireable<string>, ID: Validator<NonNullable<string>>, activityType: Validator<NonNullable<string>>}, "date" | "distance" | "fullName" | "comment" | "ID" | "activityType">>>) | undefined | null)[]>>|Array|*[]}
+ * @param {TrainingsState} state
+ * @param {TrainingsAction} action
+ * @return {TrainingsState}
  */
-export function trainings(state = [], action) {
+export function trainings(state = initTrainings, action) {
   switch (action.type) {
     case SET_TRAININGS:
-      return action.trainings;
+      return action.payload.trainings;
     default:
       return state;
   }
