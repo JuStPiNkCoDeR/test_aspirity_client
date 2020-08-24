@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Form, FormGroup, Label, Input, Button} from 'reactstrap';
 import {useForm} from 'react-hook-form';
+import {activityTypes} from '../redux/actions';
 
 const FilterBlock = ({activityType, changeActivityTypeFilter}) => {
   const {register, handleSubmit} = useForm();
@@ -14,13 +15,13 @@ const FilterBlock = ({activityType, changeActivityTypeFilter}) => {
     <div>
       <Form inline onSubmit={handleSubmit(handleApplyAction)}>
         <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
-          <Label className="mr-sm-2" for="activityTypeSelect">
+          <Label className="mr-sm-2" for="activity-type-select">
               The selected activity type is
           </Label>
           <Input
             type="select"
             name="activityType"
-            id="activityTypeSelect"
+            id="activity-type-select"
             defaultValue={activityType}
             innerRef={register}
           >
@@ -38,9 +39,7 @@ const FilterBlock = ({activityType, changeActivityTypeFilter}) => {
 };
 
 FilterBlock.propTypes = {
-  activityType: PropTypes.oneOf([
-    'ALL', 'RUN', 'WALKING', 'SKIING', 'BICYCLE',
-  ]).isRequired,
+  activityType: PropTypes.oneOf(Object.values(activityTypes)).isRequired,
   changeActivityTypeFilter: PropTypes.func.isRequired,
 };
 

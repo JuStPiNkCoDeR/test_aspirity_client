@@ -1,8 +1,10 @@
 import {
   activityTypes,
   SET_ACTIVITY_TYPE_FILTER,
-  SET_DATE_SORT_DIRECTION,
-  SET_DISTANCE_SORT_DIRECTION, SET_TRAININGS, sortableParams, sortDirections,
+  SET_SORT,
+  SET_TRAININGS,
+  sortableParams,
+  sortDirections,
 } from '../actions';
 
 /**
@@ -70,9 +72,7 @@ export function activityTypeFilter(state = initActivityTypeFilter, action) {
  */
 export function sorts(state = initSorts, action) {
   switch (action.type) {
-    case SET_DATE_SORT_DIRECTION:
-      return action.payload;
-    case SET_DISTANCE_SORT_DIRECTION:
+    case SET_SORT:
       return action.payload;
     default:
       return state;

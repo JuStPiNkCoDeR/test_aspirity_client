@@ -8,9 +8,8 @@
 // Action types
 export const SET_TRAININGS = 'SET_TRAININGS';
 export const SET_ACTIVITY_TYPE_FILTER = 'SET_ACTIVITY_TYPE_FILTER';
-export const SET_DATE_SORT_DIRECTION = 'SET_DATE_SORT_DIRECTION';
-export const SET_DISTANCE_SORT_DIRECTION = 'SET_DISTANCE_SORT_DIRECTION';
-// Other
+export const SET_SORT = 'SET_SORT';
+// Other data constants
 /**
  * @enum {ActivityType}
  */
@@ -51,16 +50,9 @@ export function setActivityTypeFilter(filter) {
   return {type: SET_ACTIVITY_TYPE_FILTER, filter};
 }
 /**
- * @param {SortDirections} direction
+ * @param {{param: sortableParams, direction: sortDirections}} sortData
  * @return {Action}
  */
-export function setDateSortDirection(direction) {
-  return {type: SET_DATE_SORT_DIRECTION, direction};
-}
-/**
- * @param {SortDirections} direction
- * @return {Action}
- */
-export function setDistanceSortDirection(direction) {
-  return {type: SET_DISTANCE_SORT_DIRECTION, direction};
+export function setSort(sortData) {
+  return {type: SET_SORT, payload: sortData};
 }
