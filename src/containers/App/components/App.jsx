@@ -4,6 +4,7 @@ import store from '../redux/store';
 
 import FilterBlock from '../redux/containers/FilterActivityType';
 import SortsSelector from '../redux/containers/SortsSelector';
+import SortedTrainings from '../redux/containers/SortedTrainings';
 
 const App = () => {
   return (
@@ -13,7 +14,7 @@ const App = () => {
         <FilterBlock />
         <SortsSelector />
       </div>
-      {/* Trainings */}
+      <SortedTrainings />
     </Provider>
   );
 };

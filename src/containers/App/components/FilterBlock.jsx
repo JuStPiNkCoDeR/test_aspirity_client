@@ -1,10 +1,17 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 import {Form, FormGroup, Label, Input, Button} from 'reactstrap';
 import {useForm} from 'react-hook-form';
-import {activityTypes} from '../redux/actions';
 
-const FilterBlock = ({activityType, changeActivityTypeFilter}) => {
+const FilterBlock = ({
+  activityType,
+  changeActivityTypeFilter,
+  fetchTrainings,
+}) => {
+  useEffect(() => {
+    fetchTrainings(activityType);
+  }, [fetchTrainings, activityType]);
+
   const {register, handleSubmit} = useForm();
 
   const handleApplyAction = (data) => {
@@ -39,8 +46,11 @@ const FilterBlock = ({activityType, changeActivityTypeFilter}) => {
 };
 
 FilterBlock.propTypes = {
-  activityType: PropTypes.oneOf(Object.values(activityTypes)).isRequired,
+  activityType: PropTypes.oneOf(
+      ['ALL', 'RUN', 'WALKING', 'BICYCLE', 'SKIING'],
+  ).isRequired,
   changeActivityTypeFilter: PropTypes.func.isRequired,
+  fetchTrainings: PropTypes.func.isRequired,
 };
 
 export default FilterBlock;

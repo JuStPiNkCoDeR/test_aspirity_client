@@ -1,8 +1,7 @@
 import {
-  activityTypes,
+  activityTypes, RECEIVE_FETCH_TRAININGS,
   SET_ACTIVITY_TYPE_FILTER,
   SET_SORT,
-  SET_TRAININGS,
   sortableParams,
   sortDirections,
 } from '../actions';
@@ -35,12 +34,11 @@ import {
 /**
  * @type {ActivityTypeFilterState}
  */
-
 const initActivityTypeFilter = activityTypes.ALL;
+
 /**
  * @type {SortsState}
  */
-
 const initSorts = {
   param: sortableParams.DATE,
   direction: sortDirections.DESC,
@@ -86,7 +84,7 @@ export function sorts(state = initSorts, action) {
  */
 export function trainings(state = initTrainings, action) {
   switch (action.type) {
-    case SET_TRAININGS:
+    case RECEIVE_FETCH_TRAININGS:
       return action.payload.trainings;
     default:
       return state;

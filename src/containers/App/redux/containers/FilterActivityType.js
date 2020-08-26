@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {setActivityTypeFilter} from '../actions';
+import {fetchTrainings, setActivityTypeFilter} from '../actions';
 
 import FilterBlock from '../../components/FilterBlock';
 
@@ -10,6 +10,9 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   changeActivityTypeFilter(activityType) {
     dispatch(setActivityTypeFilter(activityType));
+  },
+  fetchTrainings(filter) {
+    dispatch(fetchTrainings(filter));
   },
 });
 

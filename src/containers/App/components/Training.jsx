@@ -62,7 +62,9 @@ const Training = ({idx, data}) => {
             />
           ) : data.comment}</td>
       <td>
-        <Button outline onClick={handleEditAction}>Edit</Button>
+        <Button outline onClick={handleEditAction}>
+          {isEditing ? 'Cancel' : 'Edit'}
+        </Button>
         <Button outline color="danger">Delete</Button>
         {isEditing && (
           <Button
