@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Table} from 'reactstrap';
 
-import Training from './Training';
+import ActionableTraining from '../redux/containers/ActionableTraining';
 
 /**
  * @description Function for sorting trainings by the given param
@@ -48,7 +48,7 @@ const Trainings = ({trainings, sortData}) => {
       </thead>
       <tbody>
         {sortedTrainings.map((training, index) => (
-          <Training key={training.ID} idx={index} data={training} />
+          <ActionableTraining key={training.ID} idx={index} data={training} />
         ))}
       </tbody>
     </Table>

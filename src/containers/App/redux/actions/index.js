@@ -4,19 +4,14 @@
  * @typedef {'DATE'|'DISTANCE'} Sortable
  * @typedef {{type: string}} Action
  */
-import {getTrainings} from '../../../../lib/api/requests';
 
-// Action types
-// export const REQUEST_FETCH_TRAININGS = 'REQUEST_FETCH_TRAININGS';
-// /**
-//  * @param {string} filter
-//  * @return {Action}
-//  */
-// export function requestFetchTrainings(filter) {
-//   return {type: REQUEST_FETCH_TRAININGS, filter};
-// }
+import {deleteTraining, getTrainings, updateTraining} from '../../../../lib/api/requests';
 
+// ==============
+// |    GET     |
+// ==============
 export const RECEIVE_FETCH_TRAININGS = 'RECEIVE_FETCH_TRAININGS';
+
 /**
  * @param {Object} json
  * @return {Action}
@@ -29,6 +24,7 @@ export function receiveFetchTrainings(json) {
     },
   };
 }
+
 /**
  *  @param {'ALL'|'WALKING'|'RUN'|'SKIING'|'BICYCLE'} filter
  *  @return {function}
@@ -44,6 +40,82 @@ export function fetchTrainings(filter) {
   };
 }
 
+// ==============
+// |   UPDATE   |
+// ==============
+export const RECEIVE_UPDATE_TRAINING = 'RECEIVE_UPDATE_TRAINING';
+
+/**
+ * @param {Object} json
+ * @return {Action}
+ */
+export function receiveUpdateTraining(json) {
+  return {
+    type: RECEIVE_UPDATE_TRAINING,
+    payload: {
+      trainings: json.data,
+    },
+  };
+}
+
+/**
+ * @param {{
+ *  ID: string,
+ *  data: {
+ *    date: number?,
+ *    comment: number?,
+ *    activityType: string?,
+ *    distance: number?,
+ *  }}} data
+ * @return {function}
+ */
+export function modifyTraining(data) {
+  return function(dispatch) {
+    try {
+      return updateTraining(data)
+          .then((json) => dispatch(receiveUpdateTraining(json)));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+}
+
+// ==============
+// |   DELETE   |
+// ==============
+export const RECEIVE_DELETE_TRAINING = 'RECEIVE_DELETE_TRAINING';
+
+/**
+ * @param {Object} json
+ * @return {Action}
+ */
+export function receiveDeleteTraining(json) {
+  return {
+    type: RECEIVE_DELETE_TRAINING,
+    payload: {
+      trainings: json.data,
+    },
+  };
+}
+
+/**
+ * @param {string} ID
+ * @return {function}
+ */
+export function removeTraining(ID) {
+  return function(dispatch) {
+    try {
+      return deleteTraining(ID)
+          .then((json) => dispatch(receiveDeleteTraining(json)));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+}
+
+// ==============
+// |   FILTER   |
+// ==============
 export const SET_ACTIVITY_TYPE_FILTER = 'SET_ACTIVITY_TYPE_FILTER';
 /**
  * @param {ActivityType} filter
@@ -53,6 +125,9 @@ export function setActivityTypeFilter(filter) {
   return {type: SET_ACTIVITY_TYPE_FILTER, filter};
 }
 
+// ==============
+// |    SORT    |
+// ==============
 export const SET_SORT = 'SET_SORT';
 /**
  * @param {{param: sortableParams, direction: sortDirections}} sortData

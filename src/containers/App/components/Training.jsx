@@ -3,22 +3,24 @@ import PropTypes from 'prop-types';
 import {Button, Input} from 'reactstrap';
 import {useForm} from 'react-hook-form';
 
-const Training = ({idx, data}) => {
+const Training = ({idx, data, deleteTraining, updateTraining}) => {
   const [isEditing, setIsEditing] = useState(false);
   const {register, handleSubmit} = useForm();
 
   const handleDeleteAction = () => {
-    // TODO delete action here
+    deleteTraining(data.ID);
   };
 
   const handleEditAction = () => {
     setIsEditing(!isEditing);
   };
 
-  const handleSaveAction = (data) => {
-    console.log(data);
-    // TODO save action here
+  const handleSaveAction = (modified) => {
+    updateTraining({ID: data.ID, data: modified});
   };
+
+  const readableDateFormatString = new Date(data.date).toLocaleDateString();
+  const inputDateFormat = new Date(data.date).toISOString().split('T')[0];
 
   return (
     <tr>
@@ -27,10 +29,10 @@ const Training = ({idx, data}) => {
             <Input
               type="date"
               name="date"
-              defaultValue={data.date}
+              defaultValue={inputDateFormat}
               innerRef={register}
             />
-          ) : data.date}</td>
+          ) : readableDateFormatString}</td>
       <td>{data.fullName}</td>
       <td>{isEditing ? (
             <Input
@@ -65,7 +67,13 @@ const Training = ({idx, data}) => {
         <Button outline onClick={handleEditAction}>
           {isEditing ? 'Cancel' : 'Edit'}
         </Button>
-        <Button outline color="danger">Delete</Button>
+        <Button
+          outline
+          color="danger"
+          onClick={handleDeleteAction}
+        >
+          Delete
+        </Button>
         {isEditing && (
           <Button
             outline
@@ -90,6 +98,8 @@ Training.propTypes = {
     distance: PropTypes.number.isRequired,
     comment: PropTypes.string,
   }).isRequired,
+  deleteTraining: PropTypes.func.isRequired,
+  updateTraining: PropTypes.func.isRequired,
 };
 
 export default Training;

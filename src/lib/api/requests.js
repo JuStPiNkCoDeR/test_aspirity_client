@@ -1,4 +1,4 @@
-const TRAINING_API_URL = 'http://localhost/api';
+const TRAINING_API_URL = 'http://localhost:3000/api';
 
 /**
  * @description Sends a request to receive training list
@@ -26,6 +26,9 @@ export const getTrainings = async (filter) => {
 export const saveTraining = async (data) => {
   const response = await fetch(`${TRAINING_API_URL}/`, {
     method: 'POST',
+    headers: {
+      'Content-Type': 'application/json;charset=utf-8',
+    },
     body: JSON.stringify(data),
   });
 
@@ -54,12 +57,19 @@ export const saveTraining = async (data) => {
 export const updateTraining = async (data) => {
   const response = await fetch(`${TRAINING_API_URL}/`, {
     method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json;charset=utf-8',
+    },
     body: JSON.stringify(data),
   });
 
-  if (response.status !== 204) {
-    throw new Error('Unable to modify the training note');
+  const json = await response.json();
+
+  if (response.status !== 200) {
+    throw new Error(`Unable to modify the training note\n${json}`);
   }
+
+  return json;
 };
 
 /**
@@ -70,12 +80,17 @@ export const updateTraining = async (data) => {
 export const deleteTraining = async (ID) => {
   const response = await fetch(`${TRAINING_API_URL}/`, {
     method: 'DELETE',
-    body: JSON.stringify({
-      ID,
-    }),
+    headers: {
+      'Content-Type': 'application/json;charset=utf-8',
+    },
+    body: JSON.stringify({ID}),
   });
 
-  if (response.status !== 204) {
-    throw new Error('Unable to delete the training note');
+  const json = await response.json();
+
+  if (response.status !== 200) {
+    throw new Error(`Unable to delete the training note\n${json}`);
   }
+
+  return json;
 };
