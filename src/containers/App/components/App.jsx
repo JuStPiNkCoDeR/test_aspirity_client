@@ -7,11 +7,12 @@ import SortsSelector from '../redux/containers/SortsSelector';
 import SortedTrainings from '../redux/containers/SortedTrainings';
 import ActionableAddTrainingBlock from
   '../redux/containers/ActionableAddTrainingBlock';
+import WeekTrainingGraph from '../redux/containers/WeekTrainingGraph';
 
 const App = () => {
   return (
     <Provider store={store}>
-      {/* Weeks graph */}
+      <WeekTrainingGraph />
       <div>
         <FilterBlock />
         <SortsSelector />
