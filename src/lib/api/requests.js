@@ -1,4 +1,4 @@
-const TRAINING_API_URL = 'http://localhost:3000/api';
+const TRAINING_API_URL = 'http://localhost/api';
 
 /**
  * @description Sends a request to receive training list

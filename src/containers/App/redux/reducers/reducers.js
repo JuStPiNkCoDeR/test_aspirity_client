@@ -1,5 +1,5 @@
 import {
-  activityTypes, RECEIVE_FETCH_TRAININGS,
+  activityTypes, RECEIVE_ADD_TRAINING, RECEIVE_DELETE_TRAINING, RECEIVE_FETCH_TRAININGS, RECEIVE_UPDATE_TRAINING,
   SET_ACTIVITY_TYPE_FILTER,
   SET_SORT,
   sortableParams,
@@ -85,6 +85,12 @@ export function sorts(state = initSorts, action) {
 export function trainings(state = initTrainings, action) {
   switch (action.type) {
     case RECEIVE_FETCH_TRAININGS:
+      return action.payload.trainings;
+    case RECEIVE_UPDATE_TRAINING:
+      return action.payload.trainings;
+    case RECEIVE_DELETE_TRAINING:
+      return action.payload.trainings;
+    case RECEIVE_ADD_TRAINING:
       return action.payload.trainings;
     default:
       return state;

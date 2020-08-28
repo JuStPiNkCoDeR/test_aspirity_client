@@ -17,6 +17,7 @@ const Training = ({idx, data, deleteTraining, updateTraining}) => {
 
   const handleSaveAction = (modified) => {
     updateTraining({ID: data.ID, data: modified});
+    setIsEditing(false);
   };
 
   const readableDateFormatString = new Date(data.date).toLocaleDateString();
@@ -41,10 +42,10 @@ const Training = ({idx, data, deleteTraining, updateTraining}) => {
               defaultValue={data.activityType}
               innerRef={register}
             >
-              <option value="run">run</option>
-              <option value="bicycle">bicycle</option>
-              <option value="skiing">skiing</option>
-              <option value="walking">walking</option>
+              <option value="RUN">run</option>
+              <option value="BICYCLE">bicycle</option>
+              <option value="SKIING">skiing</option>
+              <option value="WALKING">walking</option>
             </Input>
           ) : data.activityType}</td>
       <td>{isEditing ? (

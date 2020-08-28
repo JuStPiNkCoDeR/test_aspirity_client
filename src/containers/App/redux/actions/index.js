@@ -5,7 +5,7 @@
  * @typedef {{type: string}} Action
  */
 
-import {deleteTraining, getTrainings, updateTraining} from '../../../../lib/api/requests';
+import {deleteTraining, getTrainings, saveTraining, updateTraining} from '../../../../lib/api/requests';
 
 // ==============
 // |    GET     |
@@ -107,6 +107,45 @@ export function removeTraining(ID) {
     try {
       return deleteTraining(ID)
           .then((json) => dispatch(receiveDeleteTraining(json)));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+}
+
+// ==============
+// |    ADD     |
+// ==============
+export const RECEIVE_ADD_TRAINING = 'RECEIVE_ADD_TRAINING';
+
+/**
+ * @param {Object} json
+ * @return {Action}
+ */
+export function receiveAddTraining(json) {
+  return {
+    type: RECEIVE_ADD_TRAINING,
+    payload: {
+      trainings: json.data,
+    },
+  };
+}
+
+/**
+ * @param {{
+ *   fullName: string,
+ *   date: number,
+ *   activityType: ActivityType,
+ *   distance: number,
+ *   comment: string?
+ * }} data
+ * @return {function}
+ */
+export function addTraining(data) {
+  return function(dispatch) {
+    try {
+      return saveTraining(data)
+          .then((json) => dispatch(receiveAddTraining(json)));
     } catch (error) {
       console.error(error);
     }
