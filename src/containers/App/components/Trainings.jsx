@@ -34,7 +34,7 @@ const Trainings = ({trainings, sortData}) => {
   );
 
   return (
-    <Table hover>
+    <Table hover responsive>
       <thead>
         <tr>
           <th>#</th>

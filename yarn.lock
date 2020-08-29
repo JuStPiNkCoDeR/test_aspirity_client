@@ -1460,10 +1460,19 @@
     lodash "^4.17.11"
     recompose "^0.30.0"
 
-"@nivo/line@^0.62.0":
+"@nivo/scales@0.62.0":
   version "0.62.0"
-  resolved "https://registry.yarnpkg.com/@nivo/line/-/line-0.62.0.tgz#b85bfcb32824e0affbf4279affd3dfbfe08255ba"
-  integrity sha512-P48gt8NjhRb5W8QjafgO/DMKVD+21X4Jf13wwL6k8lzwaKOaWS37OPPPpvDREQFZhHYWG6KcnIGEo99/yOzdWw==
+  resolved "https://registry.yarnpkg.com/@nivo/scales/-/scales-0.62.0.tgz#a424144e2f8184f2ec493273efd4ce5eb03f5895"
+  integrity sha512-x3L7/yCPLNmj/mtnOl9E/kL/3KMXKyS3IyzqB2F5PAiUcsUpxKmHwcJ9ATdPKcoUaYpf/wa9z+jL92/AInz3Pw==
+  dependencies:
+    d3-scale "^3.0.0"
+    d3-time-format "^2.1.3"
+    lodash "^4.17.11"
+
+"@nivo/scatterplot@^0.62.0":
+  version "0.62.0"
+  resolved "https://registry.yarnpkg.com/@nivo/scatterplot/-/scatterplot-0.62.0.tgz#15a292aa851156273ea00e7920c7bbbe32acbd90"
+  integrity sha512-4D9dh5kztqvQa/VAa53MUIiwdTQM1NKAFVtKn1wJs9Hgnyc2X04K/A5G3WzXAgxkAon/f0u2an5o3Q+WkKWo8A==
   dependencies:
     "@nivo/annotations" "0.62.0"
     "@nivo/axes" "0.62.0"
@@ -1473,18 +1482,10 @@
     "@nivo/scales" "0.62.0"
     "@nivo/tooltip" "0.62.0"
     "@nivo/voronoi" "0.62.0"
+    d3-scale "^3.0.0"
     d3-shape "^1.3.5"
     lodash "^4.17.11"
     react-motion "^0.5.2"
-
-"@nivo/scales@0.62.0":
-  version "0.62.0"
-  resolved "https://registry.yarnpkg.com/@nivo/scales/-/scales-0.62.0.tgz#a424144e2f8184f2ec493273efd4ce5eb03f5895"
-  integrity sha512-x3L7/yCPLNmj/mtnOl9E/kL/3KMXKyS3IyzqB2F5PAiUcsUpxKmHwcJ9ATdPKcoUaYpf/wa9z+jL92/AInz3Pw==
-  dependencies:
-    d3-scale "^3.0.0"
-    d3-time-format "^2.1.3"
-    lodash "^4.17.11"
 
 "@nivo/tooltip@0.62.0":
   version "0.62.0"

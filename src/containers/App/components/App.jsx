@@ -8,16 +8,17 @@ import SortedTrainings from '../redux/containers/SortedTrainings';
 import ActionableAddTrainingBlock from
   '../redux/containers/ActionableAddTrainingBlock';
 import WeekTrainingGraph from '../redux/containers/WeekTrainingGraph';
+import {FilterAndSortsStyledBlock} from '../shared/styled';
 
 const App = () => {
   return (
     <Provider store={store}>
       <WeekTrainingGraph />
-      <div>
+      <FilterAndSortsStyledBlock>
         <FilterBlock />
         <SortsSelector />
         <ActionableAddTrainingBlock />
-      </div>
+      </FilterAndSortsStyledBlock>
       <SortedTrainings />
     </Provider>
   );

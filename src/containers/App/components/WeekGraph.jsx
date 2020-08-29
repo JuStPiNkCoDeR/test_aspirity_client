@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
-import {ResponsiveLine} from '@nivo/line';
+import {ResponsiveScatterPlot} from '@nivo/scatterplot';
+import {Container, Row, Col} from 'reactstrap';
 import styled from 'styled-components';
 
 /**
@@ -70,70 +71,69 @@ const WeekGraph = ({trainings}) => {
   }, [trainings]);
 
   return (
-    <BlockWrapper>
-      <GraphHeader>
-        Past 10 weeks trainings results
-      </GraphHeader>
-      <GraphWrapper>
-        <ResponsiveLine
-          data={data}
-          margin={{top: 25, right: 30, bottom: 50, left: 30}}
-          xScale={{
-            type: 'time',
-            format: '%Y-%m-%d',
-          }}
-          xFormat="time:%d %b"
-          yScale={{
-            type: 'linear',
-            min: 'auto',
-            max: 'auto',
-            stacked: true,
-            reverse: false,
-          }}
-          axisTop={null}
-          axisRight={null}
-          axisBottom={{
-            orient: 'bottom',
-            format: '%b %d',
-            legend: 'Date',
-            legendOffset: 36,
-            legendPosition: 'middle',
-          }}
-          axisLeft={{
-            orient: 'left',
-            tickSize: 5,
-            tickPadding: 5,
-            tickRotation: 0,
-            legend: 'Distance in km',
-            legendOffset: -40,
-            legendPosition: 'middle',
-          }}
-          colors={{scheme: 'set1'}}
-          pointSize={10}
-          pointBorderWidth={2}
-          pointBorderColor={{from: 'serieColor'}}
-          pointLabel="y"
-          pointLabelYOffset={-12}
-          useMesh={true}
-        />
-      </GraphWrapper>
-    </BlockWrapper>
+    <Container>
+      <Row>
+        <Col>
+          <GraphHeader>Past 10 weeks trainings results</GraphHeader>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <GraphWrapper>
+            <ResponsiveScatterPlot
+              data={data}
+              margin={{top: 25, right: 30, bottom: 50, left: 30}}
+              xScale={{
+                type: 'time',
+                format: '%Y-%m-%d',
+              }}
+              xFormat="time:%d %b"
+              yScale={{
+                type: 'linear',
+                min: 'auto',
+                max: 'auto',
+                stacked: true,
+                reverse: false,
+              }}
+              axisTop={null}
+              axisRight={null}
+              axisBottom={{
+                orient: 'bottom',
+                format: '%b %d',
+                legend: 'Date',
+                legendOffset: 36,
+                legendPosition: 'middle',
+              }}
+              axisLeft={{
+                orient: 'left',
+                tickSize: 5,
+                tickPadding: 5,
+                tickRotation: 0,
+                legend: 'Distance in km',
+                legendOffset: -40,
+                legendPosition: 'middle',
+              }}
+              colors={{scheme: 'set1'}}
+              pointSize={10}
+              pointBorderWidth={2}
+              pointBorderColor={{from: 'serieColor'}}
+              pointLabel="y"
+              pointLabelYOffset={-12}
+              useMesh={true}
+            />
+          </GraphWrapper>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 
-const BlockWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+const GraphHeader = styled.h3`
+  text-align: center;
 `;
 
 const GraphWrapper = styled.div`
-  width: 1000px;
   height: 400px;
-`;
-
-const GraphHeader = styled.h3`
-  
 `;
 
 WeekGraph.propTypes = {

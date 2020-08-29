@@ -9,8 +9,12 @@ import {
   FormGroup,
   Label,
   Input,
+  Container,
+  Row,
+  Col,
 } from 'reactstrap';
 import {useForm} from 'react-hook-form';
+import styled from 'styled-components';
 
 const AddTrainingBlock = ({saveTraining}) => {
   const [showModal, setShowModal] = useState(false);
@@ -19,19 +23,25 @@ const AddTrainingBlock = ({saveTraining}) => {
   const toggle = () => setShowModal(!showModal);
 
   const handleAddAction = (data) => {
-    console.log(data);
     saveTraining(data);
+    toggle();
   };
 
   return (
-    <div>
-      <Button
-        outline
-        color="primary"
-        onClick={toggle}
-      >
-        Add training note
-      </Button>
+    <Container>
+      <BlockWrapper>
+        <Row>
+          <Col xs={{size: 2, offset: 5}}>
+            <Button
+              outline
+              color="primary"
+              onClick={toggle}
+            >
+              Add training note
+            </Button>
+          </Col>
+        </Row>
+      </BlockWrapper>
       <Modal isOpen={showModal} toggle={toggle}>
         <ModalHeader toggle={toggle}>Add training note form</ModalHeader>
         <ModalBody>
@@ -95,9 +105,17 @@ const AddTrainingBlock = ({saveTraining}) => {
           </Form>
         </ModalBody>
       </Modal>
-    </div>
+    </Container>
   );
 };
+
+const BlockWrapper = styled.div`
+  border: 2px solid #333;
+  border-top: none;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  padding-bottom: 30px;
+`;
 
 AddTrainingBlock.propTypes = {
   saveTraining: PropTypes.func.isRequired,
