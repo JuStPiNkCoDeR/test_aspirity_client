@@ -1,0 +1,13 @@
+version: "3.4"
+
+services:
+  client:
+    image: justpinkcoder/react-app
+    container_name: test_aspirity_client
+    working_dir: /app
+    command: npm run start
+    restart: always
+    ports:
+      - '80:8080'
+    volumes:
+    - ./build/:/app/build/
