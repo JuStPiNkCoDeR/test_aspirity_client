@@ -5,7 +5,12 @@
  * @typedef {{type: string}} Action
  */
 
-import {deleteTraining, getTrainings, saveTraining, updateTraining} from '../../../../lib/api/requests';
+import {
+  deleteTraining,
+  getTrainings,
+  saveTraining,
+  updateTraining,
+} from '../../../../lib/api/requests';
 
 // ==============
 // |    GET     |

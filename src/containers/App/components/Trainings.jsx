@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Table} from 'reactstrap';
+import styled from 'styled-components';
 
 import ActionableTraining from '../redux/containers/ActionableTraining';
 
@@ -42,8 +43,8 @@ const Trainings = ({trainings, sortData}) => {
           <th>Full Name</th>
           <th>Activity Type</th>
           <th>Distance(km)</th>
-          <th>Comment</th>
-          <th>Actions</th>
+          <TextCenteredHeader>Comment</TextCenteredHeader>
+          <TextCenteredHeader>Actions</TextCenteredHeader>
         </tr>
       </thead>
       <tbody>
@@ -54,6 +55,10 @@ const Trainings = ({trainings, sortData}) => {
     </Table>
   );
 };
+
+const TextCenteredHeader = styled.th`
+  text-align: center;
+`;
 
 Trainings.propTypes = {
   trainings: PropTypes.arrayOf(

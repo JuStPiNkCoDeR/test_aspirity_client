@@ -52,7 +52,7 @@ function searchForPastTenWeeks(trainings) {
   return passedTrainings;
 }
 
-const WeekGraph = ({trainings}) => {
+const WeekGraph = ({trainings, activityType}) => {
   const [data, setData] = useState([]);
   useEffect(() => {
     if (trainings.length === 0) {
@@ -74,7 +74,9 @@ const WeekGraph = ({trainings}) => {
     <Container>
       <Row>
         <Col>
-          <GraphHeader>Past 10 weeks trainings results</GraphHeader>
+          <GraphHeader>
+            Past 10 weeks trainings results({activityType})
+          </GraphHeader>
         </Col>
       </Row>
       <Row>
@@ -147,6 +149,7 @@ WeekGraph.propTypes = {
         comment: PropTypes.string,
       }),
   ).isRequired,
+  activityType: PropTypes.string.isRequired,
 };
 
 export default WeekGraph;

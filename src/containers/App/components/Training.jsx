@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import {Button, Input} from 'reactstrap';
 import {useForm} from 'react-hook-form';
+import styled from 'styled-components';
 
 const Training = ({idx, data, deleteTraining, updateTraining}) => {
   const [isEditing, setIsEditing] = useState(false);
@@ -64,7 +65,7 @@ const Training = ({idx, data, deleteTraining, updateTraining}) => {
               innerRef={register}
             />
           ) : data.comment}</td>
-      <td>
+      <ActionsField>
         <Button outline onClick={handleEditAction}>
           {isEditing ? 'Cancel' : 'Edit'}
         </Button>
@@ -84,10 +85,15 @@ const Training = ({idx, data, deleteTraining, updateTraining}) => {
               Save
           </Button>
         )}
-      </td>
+      </ActionsField>
     </tr>
   );
 };
+
+const ActionsField = styled.td`
+  display: flex;
+  justify-content: space-evenly;
+`;
 
 Training.propTypes = {
   idx: PropTypes.number.isRequired,

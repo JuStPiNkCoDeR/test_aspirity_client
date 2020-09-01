@@ -1,4 +1,4 @@
-const TRAINING_API_URL = 'http://localhost/api';
+const TRAINING_API_URL = 'https://nameless-harbor-51966.herokuapp.com/api';
 
 /**
  * @description Sends a request to receive training list
